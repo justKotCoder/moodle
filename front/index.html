@@ -1,10 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Progress</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 720px;
+            background-color: #fff;
+            border-radius: 35px 0 0 0;
+            padding: 16px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .course-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+        .course-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .progress-bar {
+            height: 20px;
+            border-radius: 10px;
+            background: linear-gradient(to right, red, orange, yellow, green);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        .progress-bar span {
+            display: block;
+            height: 100%;
+            background-color: gray;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .progress-value {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .progress-circle {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 6px solid;
+            text-align: center;
+            line-height: 48px;
+            font-weight: bold;
+        }
+        .circle-orange {
+            border-color: orange;
+            color: orange;
+        }
+        .toggle-button {
+            cursor: pointer;
+            font-size: 14px;
+            display: block;
+            text-align: center;
+            color: #007BFF;
+            margin-top: 8px;
+        }
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .header button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+        .course-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .course-details table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+        }
+        .course-details th, .course-details td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .course-details th {
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
+
+<div class="container">
+    <div class="header">
+        <button>🌐</button>
+        <button>ℹ️</button>
+    </div>
+    <div class="course-card">
+        <div class="course-title">Название курса n-1</div>
+        <div class="progress-bar"><span style="width: 25%;"></span></div>
+        <div class="progress-value">Прогресс курса: 25%</div>
+        <div class="progress-circle circle-orange">25%</div>
+        <div class="toggle-button">▼</div>
+        <div class="course-details">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Задание</th>
+                        <th>Оценка</th>
+                        <th>Баллы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Тест 1</td>
+                        <td><div class="progress-bar" style="height: 10px;"><span style="width: 90%;"></span></div></td>
+                        <td>9/10</td>
+                    </tr>
+                    <tr>
+                        <td>Тест 2</td>
+                        <td><div class="progress-bar" style="height: 10px;"><span style="width: 75%;"></span></div></td>
+                        <td>9/12</td>
+                    </tr>
+                    <tr>
+                        <td>Задание 1</td>
+                        <td><div class="progress-bar" style="height: 10px;"><span style="width: 50%;"></span></div></td>
+                        <td>48/96</td>
+                    </tr>
+                    <tr>
+                        <td>Лабораторная работа</td>
+                        <td><div class="progress-bar" style="height: 10px;"><span style="width: 30%;"></span></div></td>
+                        <td>15/50</td>
+                    </tr>
+                    <tr>
+                        <td>Итоговый тест</td>
+                        <td><div class="progress-bar" style="height: 10px;"><span style="width: 10%;"></span></div></td>
+                        <td>8/80</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="toggle-button">▲</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // JavaScript для взаимодействия с элементами (например, раскрытие деталей курса)
+    document.querySelectorAll('.toggle-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const details = button.closest('.course-card').querySelector('.course-details');
+            if (details.style.maxHeight) {
+                details.style.maxHeight = null;
+                button.textContent = '▼';
+            } else {
+                details.style.maxHeight = details.scrollHeight + 'px';
+                button.textContent = '▲';
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
