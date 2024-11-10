@@ -1,0 +1,24 @@
+[
+    {
+        "name": "Название курса 1",
+        "progress": 100,
+        "tasks": [
+            { "title": "Тест 1", "score": "9/10", "progress": 90 },
+            { "title": "Тест 2", "score": "9/12", "progress": 75 },
+            { "title": "Задание 1", "score": "48/96", "progress": 50 },
+            { "title": "Лабораторная работа", "score": "15/50", "progress": 30 },
+            { "title": "Итоговый тест", "score": "8/80", "progress": 10 }
+        ]
+    },
+    {
+        "name": "Название курса 2",
+        "progress": 50,
+        "tasks": [
+            { "title": "Тест 1", "score": "7/10", "progress": 70 },
+            { "title": "Тест 2", "score": "6/12", "progress": 50 },
+            { "title": "Задание 1", "score": "40/96", "progress": 45 },
+            { "title": "Лабораторная работа", "score": "20/50", "progress": 40 },
+            { "title": "Итоговый тест", "score": "6/80", "progress": 15 }
+        ]
+    }
+]

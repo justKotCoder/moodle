@@ -1,7 +1,7 @@
 const courses = [
     {
         name: 'Название курса 1',
-        progress: 25,
+        progress: 100,
         tasks: [
             { title: 'Тест 1', score: '9/10', progress: 90 },
             { title: 'Тест 2', score: '9/12', progress: 75 },
@@ -10,7 +10,17 @@ const courses = [
             { title: 'Итоговый тест', score: '8/80', progress: 10 },
         ]
     },
-    // Добавьте другие курсы здесь
+    {
+        name: 'Название курса 2',
+        progress: 50,
+        tasks: [
+            { title: 'Тест 1', score: '7/10', progress: 70 },
+            { title: 'Тест 2', score: '6/12', progress: 50 },
+            { title: 'Задание 1', score: '40/96', progress: 45 },
+            { title: 'Лабораторная работа', score: '20/50', progress: 40 },
+            { title: 'Итоговый тест', score: '6/80', progress: 15 },
+        ]
+    }
 ];
 
 function renderCourses(courses) {
@@ -39,14 +49,6 @@ function renderCourses(courses) {
         courseHeader.appendChild(courseTitle);
         courseHeader.appendChild(courseProgressCircle);
 
-        const arrow = document.createElement('div');
-        arrow.className = 'arrow';
-        arrow.textContent = '▼';
-        arrow.onclick = () => {
-            tasksContainer.style.display = tasksContainer.style.display === 'none' ? 'block' : 'none';
-        };
-        courseHeader.appendChild(arrow);
-
         const courseProgress = document.createElement('div');
         courseProgress.className = 'course-progress';
         const progressBar = document.createElement('div');
@@ -69,39 +71,41 @@ function renderCourses(courses) {
             const taskDiv = document.createElement('div');
             taskDiv.className = 'task';
 
-            const taskTitle = document.createElement('div');
+            const taskTitle = document.createElement('span');
             taskTitle.className = 'task-title';
             taskTitle.textContent = task.title;
 
+            const taskProgressBar = document.createElement('div');
+            taskProgressBar.className = 'task-progress-bar';
             const taskProgress = document.createElement('div');
             taskProgress.className = 'task-progress';
-            const taskProgressBar = document.createElement('div');
-            taskProgressBar.className = 'progress-bar';
-            const taskProgressInner = document.createElement('div');
-            taskProgressInner.className = 'progress';
-            taskProgressInner.style.width = `${task.progress}%`;
-            const taskProgressLabel = document.createElement('span');
-            taskProgressLabel.className = 'progress-label';
-            taskProgressLabel.textContent = `${task.progress}%`;
+            taskProgress.style.width = `${task.progress}%`;
 
-            taskProgressBar.appendChild(taskProgressInner);
-            taskProgress.appendChild(taskProgressBar);
-            taskProgress.appendChild(taskProgressLabel);
+            taskProgressBar.appendChild(taskProgress);
 
-            const taskScore = document.createElement('div');
+            const taskScore = document.createElement('span');
             taskScore.className = 'task-score';
             taskScore.textContent = task.score;
 
             taskDiv.appendChild(taskTitle);
-            taskDiv.appendChild(taskProgress);
+            taskDiv.appendChild(taskProgressBar);
             taskDiv.appendChild(taskScore);
 
             tasksContainer.appendChild(taskDiv);
         });
 
+        const arrow = document.createElement('div');
+        arrow.className = 'arrow';
+        arrow.textContent = '▼';
+        arrow.addEventListener('click', () => {
+            tasksContainer.style.display = tasksContainer.style.display === 'none' ? 'block' : 'none';
+            arrow.classList.toggle('open');
+        });
+
         courseCard.appendChild(courseHeader);
         courseCard.appendChild(courseProgress);
         courseCard.appendChild(tasksContainer);
+        courseCard.appendChild(arrow);
 
         container.appendChild(courseCard);
     });
