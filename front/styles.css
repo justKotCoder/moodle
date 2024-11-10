@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.courses-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 720px;
+    height: 695px;
+    position: absolute;
+    top: 172px;
+    left: 360px;
+    border-radius: 35px 0px 0px 0px;
+    opacity: 0;
+}
+
+.course-card {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.course-progress-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.course-progress-circle span {
+    position: absolute;
+    font-size: 14px;
+}
+
+.circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: conic-gradient(orange 0%, #eee 0%);
+}
+
+.course-progress {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 10px;
+    background: #eee;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(to right, red, orange, yellow, green);
+    border-radius: 5px;
+}
+
+.progress-label {
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.tasks-container {
+    display: none;
+    margin-top: 10px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.task .task-title {
+    flex: 1;
+}
+
+.task .task-progress {
+    flex: 1;
+}
+
+.task .task-score {
+    flex: 0 0 50px;
+    text-align: right;
+}
+
+.arrow {
+    cursor: pointer;
+    user-select: none;
+}
