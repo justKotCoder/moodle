@@ -1,0 +1,40 @@
+<ul>
+    {{#courses}}
+    <li class="course">
+        <h2>{{course_name}}</h2>
+        <p>Прогресс курса: 
+            <progress value="{{progress}}" max="100">{{progress}}%</progress> ({{progress}}%)
+        </p>
+        <p>Итоговая оценка: {{final_grade}}%</p>
+        <button class="toggle-details">▼</button>
+        <table class="course-activities" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Задание</th>
+                    <th>Оценка (%)</th>
+                    <th>Баллы</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#activities}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{completion}}%</td>
+                    <td>{{grade}} / {{grademax}}</td>
+                </tr>
+                {{/activities}}
+            </tbody>
+        </table>
+    </li>
+    {{/courses}}
+</ul>
+
+<script>
+    document.querySelectorAll('.toggle-details').forEach(button => {
+        button.addEventListener('click', () => {
+            const table = button.nextElementSibling;
+            table.style.display = table.style.display === 'none' ? 'block' : 'none';
+            button.textContent = table.style.display === 'none' ? '▼' : '▲';
+        });
+    });
+</script>
